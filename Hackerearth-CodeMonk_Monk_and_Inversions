@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    //Number of Test Cases
+    int T;
+    scanf("%d",&T);
+    for(int n=0;n<T;n++)
+    {
+
+        //Number of Rows and column
+        int N;
+        scanf("%d",&N);
+        //Dynamically Allot for 2D Array
+        int *arr= (int *)malloc(N*N*sizeof(int));
+        //Putting value in a Matrix
+        for (int i=0; i < N; i++) {
+            for(int j=0;j<N;j++) {
+                scanf("%d", &arr[i*N+j]);
+            }
+        }
+        int count=0; //For Counting the Inversions
+        for(int i=0;i<N;i++)  //Row Number
+        {
+            for(int j=0;j<N;j++) //Column Number
+            {
+                for(int p=i;p<N;p++)
+                {
+                    for(int q=j;q<N;q++)
+                    {
+                        if(arr[i*N+j] > arr[p*N+q] )
+                        {
+                            count++;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    printf("%d\n",count);
+
+
+    }
+    return 0;
+}
